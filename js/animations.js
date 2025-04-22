@@ -1,1 +1,1 @@
-console.log("animations.js loaded");
+console.log("animations");

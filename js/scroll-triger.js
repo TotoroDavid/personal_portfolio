@@ -16,7 +16,7 @@ if (Webflow.env("editor") === undefined) {
 
     ScrollTrigger.scrollerProxy(document.body, {
         scrollTop(value) {
-            return arguments.length ? lenis.scrollTo(value) : lenis.scroll.instance.scroll.y;
+            return arguments.length ? lenis.scrollTo(value, { immediate: true }) : lenis.scroll;
         },
         getBoundingClientRect() {
             return {
@@ -29,5 +29,25 @@ if (Webflow.env("editor") === undefined) {
         pinType: document.body.style.transform ? "transform" : "fixed"
     });
 
-    ScrollTrigger.refresh(); // Refresca después de configurar el proxy
+    ScrollTrigger.refresh();
 }
+
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.from(".header_item", {
+    x: 100,
+    opacity: 0,
+    duration: 1,
+    ease: "power3.out",
+    stagger: {
+        each: 0.15,
+        from: "start"
+    },
+    scrollTrigger: {
+        trigger: ".header_list-wrapper",
+        start: "top 85%",
+        toggleActions: "play none none reverse",
+        scrub: 1,
+        markers: true // true si quieres debuggear
+    }
+});
