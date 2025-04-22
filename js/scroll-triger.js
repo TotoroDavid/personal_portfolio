@@ -48,6 +48,6 @@ gsap.from(".header_item", {
         start: "top 85%",
         toggleActions: "play none none reverse",
         scrub: 1,
-        markers: true // true si quieres debuggear
+        markers: false // true si quieres debuggear
     }
 });
