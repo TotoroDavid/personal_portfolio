@@ -34,7 +34,8 @@ if (Webflow.env("editor") === undefined) {
 
 gsap.registerPlugin(ScrollTrigger);
 
-const tl = gsap.timeline({
+// Secondary header animations
+const secondaryTimeline = gsap.timeline({
     scrollTrigger: {
         trigger: ".section-landing",
         start: "top top",
@@ -45,16 +46,15 @@ const tl = gsap.timeline({
 });
 
 // Movimiento en orden
-tl.to(".video-wrapper-2", { y: "50vh", x: "-5vw" }, 0);
-tl.to(".video-wrapper-1", { y: "100vh", x: "5vw" }, 0.2);
-tl.to(".main-video", { y: "200vh" }, 0.4);
+secondaryTimeline.to(".video-wrapper-2", { y: "50vh", x: "-5vw" }, 0);
+secondaryTimeline.to(".video-wrapper-1", { y: "100vh", x: "5vw" }, 0.2);
+secondaryTimeline.to(".main-video", { y: "200vh" }, 0.4);
 
-tl.to(".main-video .video", {
+secondaryTimeline.to(".main-video .video", {
     width: "100vw",
     height: "100vh",
-
     y: "-50vh"
 }, 0.6);
 
 // Botón aparece al final
-tl.to(".button-video", { autoAlpha: 1, duration: 0.5 }, 0.8);
+secondaryTimeline.to(".button-video", { autoAlpha: 1, duration: 0.5 }, 0.8);
